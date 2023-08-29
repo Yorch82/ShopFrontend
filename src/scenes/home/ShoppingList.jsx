@@ -73,7 +73,7 @@ const ShoppingList = () => {
             ({ id, product, price, image_path, sectionId, categoryId }) => (
               <Item
                 key={id}
-                postId={id}
+                id={id}
                 product={product}
                 price={price}
                 image_path={image_path}
@@ -87,7 +87,7 @@ const ShoppingList = () => {
             ({ id, product, price, image_path, sectionId, categoryId }) => (
               <Item
                 key={id}
-                postId={id}
+                id={id}
                 product={product}
                 price={price}
                 image_path={image_path}
@@ -101,7 +101,7 @@ const ShoppingList = () => {
             ({ id, product, price, image_path, sectionId, categoryId }) => (
               <Item
                 key={id}
-                postId={id}
+                id={id}
                 product={product}
                 price={price}
                 image_path={image_path}
@@ -115,7 +115,7 @@ const ShoppingList = () => {
             ({ id, product, price, image_path, sectionId, categoryId }) => (
               <Item
                 key={id}
-                postId={id}
+                id={id}
                 product={product}
                 price={price}
                 image_path={image_path}

@@ -4,6 +4,7 @@ import productsService from './productsService';
 const initialState = {
   products: [],
   isLoading: false,
+  product: {},
 };
 
 export const getAll = createAsyncThunk('products/', async thunkAPI => {
@@ -14,6 +15,18 @@ export const getAll = createAsyncThunk('products/', async thunkAPI => {
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+export const getById = createAsyncThunk(
+  "posts/getById",
+  async (id, thunkAPI) => {
+    try {
+      return await productsService.getProductById(id);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const productsSlice = createSlice({
   name: 'products',
@@ -30,7 +43,10 @@ export const productsSlice = createSlice({
       })
       .addCase(getAll.pending, state => {
         state.isLoading = true;
-      });
+      })
+      .addCase(getById.fulfilled, (state, action) => {
+        state.product = action.payload.productById;
+      })
   },
 });
 

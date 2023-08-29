@@ -28,7 +28,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const cart = useSelector((state) => state.cart.cart);
-console.log(cart.length)
+
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
@@ -38,7 +38,7 @@ console.log(cart.length)
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
-      <FlexBetween gap="1.75rem">
+      <FlexBetween gap="1.75rem" >
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
@@ -93,10 +93,14 @@ console.log(cart.length)
             }}
           >
             <IconButton
-              onClick={() => dispatch(setIsCartOpen({}))}
-              sx={{ color: "black" }}
+              onClick={() => dispatch(setIsCartOpen({}))}             
             >
+              {theme.palette.mode === "dark" ? (
               <ShoppingBagOutlined sx={{ fontSize: "25px" }} />
+            ) : (
+              <ShoppingBagOutlined sx={{ color: dark, fontSize: "25px" }} />
+            )}
+              
             </IconButton>
           </Badge>         
         </FlexBetween>
@@ -146,7 +150,31 @@ console.log(cart.length)
               ) : (
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
-            </IconButton>                        
+            </IconButton>
+            <Badge
+            badgeContent={cart.length}
+            color="secondary"
+            invisible={cart.length === 0}
+            sx={{
+              "& .MuiBadge-badge": {
+                right: 5,
+                top: 5,
+                padding: "0 4px",
+                height: "14px",
+                minWidth: "13px",
+              },
+            }}
+          >
+            <IconButton
+              onClick={() => dispatch(setIsCartOpen({}))}
+            >
+              {theme.palette.mode === "dark" ? (
+              <ShoppingBagOutlined sx={{ fontSize: "25px" }} />
+            ) : (
+              <ShoppingBagOutlined sx={{ color: dark, fontSize: "25px" }} />
+            )}
+            </IconButton>
+          </Badge>                         
           </FlexBetween>
         </Box>
       )}

@@ -8,6 +8,7 @@ import Navbar from './scenes/global/Navbar';
 import Footer from './scenes/global/Footer';
 import Home from './scenes/home/Home';
 import CartMenu from './scenes/global/CartMenu';
+import ItemDetails from './scenes/itemDetails/ItemDetails';
 
 function App() {
   const mode = useSelector(state => state.auth.mode);
@@ -20,6 +21,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path="product/:productId" element={<ItemDetails />} />
           </Routes>
           <CartMenu />
           <Footer />
