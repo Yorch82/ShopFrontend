@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { IconButton, Box, Typography, useTheme, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-//import { shades } from "../theme";
-//import { addToCart } from "../state";
+import { colorTokens } from "../theme";
+import { addToCart } from "../features/cart/index";
 import { useNavigate } from 'react-router-dom';
 
 const Item = ({ id, product, price, image_path, sectionId, categoryId }) => {
@@ -15,6 +15,8 @@ const Item = ({ id, product, price, image_path, sectionId, categoryId }) => {
   const {
     palette: { neutral },
   } = useTheme();
+
+  const productOnly = { id, product, price, image_path, sectionId, categoryId }
 
   return (
     <Box>
@@ -43,22 +45,22 @@ const Item = ({ id, product, price, image_path, sectionId, categoryId }) => {
             <Box
               display='flex'
               alignItems='center'
-              backgroundColor='#ffffff'
+              backgroundColor={colorTokens.primary[100]}
               borderRadius='3px'
             >
               <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
                 <RemoveIcon />
               </IconButton>
-              <Typography color='#ffffff'>{count}</Typography>
+              <Typography color={colorTokens.primary[300]}>{count}</Typography>
               <IconButton onClick={() => setCount(count + 1)}>
                 <AddIcon />
               </IconButton>
             </Box>
             <Button
-              //   onClick={() => {
-              //     dispatch(addToCart({ product: { ...product, count } }));
-              //   }}
-              sx={{ backgroundColor: '#ffffff', color: 'white' }}
+                onClick={() => {
+                  dispatch(addToCart({ product: { ...productOnly, count } }));
+                }}
+              sx={{ backgroundColor: colorTokens.primary[300], color: 'black' }}
             >
               Add to Cart
             </Button>

@@ -7,6 +7,7 @@ import { useMemo } from 'react';
 import Navbar from './scenes/global/Navbar';
 import Footer from './scenes/global/Footer';
 import Home from './scenes/home/Home';
+import CartMenu from './scenes/global/CartMenu';
 
 function App() {
   const mode = useSelector(state => state.auth.mode);
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
           </Routes>
+          <CartMenu />
           <Footer />
         </ThemeProvider>
       </BrowserRouter>

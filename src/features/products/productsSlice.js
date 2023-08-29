@@ -4,7 +4,6 @@ import productsService from './productsService';
 const initialState = {
   products: [],
   isLoading: false,
-  product: {},
 };
 
 export const getAll = createAsyncThunk('products/', async thunkAPI => {
@@ -23,7 +22,7 @@ export const productsSlice = createSlice({
     reset: state => {
       state.isLoading = false;
     },
-  },
+  },  
   extraReducers: builder => {
     builder
       .addCase(getAll.fulfilled, (state, action) => {

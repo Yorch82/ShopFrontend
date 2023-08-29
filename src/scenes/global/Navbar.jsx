@@ -6,25 +6,29 @@ import {
   Typography,  
   useTheme,
   useMediaQuery,
+  Badge,
 } from "@mui/material";
 import {
   Search,
   DarkMode,
   LightMode,
   Menu,
-  Close,
+  Close,  
+  ShoppingBagOutlined
 } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMode } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "../../components/FlexBetween";
+import { setIsCartOpen } from "../../features/cart/index";
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-
+  const cart = useSelector((state) => state.cart.cart);
+console.log(cart.length)
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
@@ -73,7 +77,28 @@ const Navbar = () => {
             ) : (
               <LightMode sx={{ color: dark, fontSize: "25px" }} />
             )}
-          </IconButton>         
+          </IconButton>
+          <Badge
+            badgeContent={cart.length}
+            color="secondary"
+            invisible={cart.length === 0}
+            sx={{
+              "& .MuiBadge-badge": {
+                right: 5,
+                top: 5,
+                padding: "0 4px",
+                height: "14px",
+                minWidth: "13px",
+              },
+            }}
+          >
+            <IconButton
+              onClick={() => dispatch(setIsCartOpen({}))}
+              sx={{ color: "black" }}
+            >
+              <ShoppingBagOutlined sx={{ fontSize: "25px" }} />
+            </IconButton>
+          </Badge>         
         </FlexBetween>
       ) : (
         <IconButton
