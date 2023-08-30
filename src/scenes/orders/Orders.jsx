@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { getAll, resetOrder } from '../../features/orders/ordersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
