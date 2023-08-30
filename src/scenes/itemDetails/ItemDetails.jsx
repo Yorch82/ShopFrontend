@@ -18,7 +18,7 @@ const ItemDetails = () => {
   const [value, setValue] = useState('description');
   const [count, setCount] = useState(1);
   const { product } = useSelector(state => state.products);
-
+    console.log(product)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -100,7 +100,7 @@ const ItemDetails = () => {
               <FavoriteBorderOutlinedIcon />
               <Typography sx={{ ml: '5px' }}>ADD TO WISHLIST</Typography>
             </Box>
-            <Typography>CATEGORIES: {product?.categoryId}</Typography>
+            <Typography>CATEGORIES: {product?.Category?.category}</Typography>
           </Box>
         </Box>
       </Box>

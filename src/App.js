@@ -9,6 +9,8 @@ import Footer from './scenes/global/Footer';
 import Home from './scenes/home/Home';
 import CartMenu from './scenes/global/CartMenu';
 import ItemDetails from './scenes/itemDetails/ItemDetails';
+import LoginPage from './scenes/loginPage/LoginPage';
+import Profile from './scenes/profile/Profile';
 
 function App() {
   const mode = useSelector(state => state.auth.mode);
@@ -21,6 +23,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path="/loginpage" element={<LoginPage />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="product/:productId" element={<ItemDetails />} />
           </Routes>
           <CartMenu />

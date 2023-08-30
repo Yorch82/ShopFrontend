@@ -11,6 +11,7 @@ const initialState = {
   isSuccess: false,
   message: '',
   isLoading: false,
+  token: '',
 };
 
 export const register = createAsyncThunk(
@@ -63,7 +64,7 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isSuccess = true;
-        state.message = action.payload.message;
+        state.message = action.payload.user.message;
       })
       .addCase(login.rejected, (state, action) => {
         state.isError = true;
