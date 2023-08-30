@@ -7,25 +7,21 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, reset } from '../../features/auth/authSlice';
-import Dropzone from 'react-dropzone';
-import FlexBetween from '../../components/FlexBetween';
 import InstantMessage from '../../components/InstantMessage';
 
-// const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 // min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
 const registerSchema = yup.object().shape({
   name: yup.string().required('required'),
   surname: yup.string().required('required'),
   email: yup.string().email('invalid email').required('required'),
-  password: yup.string().required('required'),
-  // password: yup.string().min(5).matches(passwordRules, { message: "Por favor crea una contraseña más robusta" }).required('Obligatorio'),
+  password: yup.string().min(5).matches(passwordRules, { message: "Por favor crea una contraseña más robusta" }).required('Obligatorio'),
   password2: yup
     .string()
     .oneOf([yup.ref('password'), null], 'Passwords do not match')

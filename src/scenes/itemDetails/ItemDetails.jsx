@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import Item from '../../components/Item';
+import Item from '../../components/Item';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -17,8 +17,7 @@ const ItemDetails = () => {
   const { productId } = useParams();
   const [value, setValue] = useState('description');
   const [count, setCount] = useState(1);
-  const { product } = useSelector(state => state.products);
-    console.log(product)
+  const { product, products } = useSelector(state => state.products);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -114,7 +113,7 @@ const ItemDetails = () => {
       </Box>
       <Box display='flex' flexWrap='wrap' gap='15px'>
         {value === 'description' && (
-          <div>{product?.product}</div>
+          <div>{product?.description}</div>
         )}
         {value === 'reviews' &&
           product.Reviews.map(({ id, review, rating }) => (
@@ -139,9 +138,17 @@ const ItemDetails = () => {
           columnGap='1.33%'
           justifyContent='space-between'
         >
-          {/* {products.slice(0, 4).map((product, i) => (
-            <Item key={`${product.product}-${i}`} item={product} />
-          ))} */}
+          {products.slice(0, 4).map(({ id, product, price, image_path, sectionId, categoryId }) => (
+            <Item
+            key={id}
+            id={id}
+            product={product}
+            price={price}
+            image_path={image_path}
+            sectionId={sectionId}
+            categoryId={categoryId}
+          />
+          ))}
         </Box>
       </Box>
     </Box>

@@ -43,7 +43,7 @@ const LoginPage = () => {
       setError(true);
     }
     if (isSuccess) {
-      setMessage('Bienvenid@');
+      setMessage(`${message}`);
       setSeverity('success');
       setError(true);
       setTimeout(() => {

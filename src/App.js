@@ -12,11 +12,12 @@ import ItemDetails from './scenes/itemDetails/ItemDetails';
 import LoginPage from './scenes/loginPage/LoginPage';
 import RegisterPage from './scenes/registerPage/RegisterPage';
 import Profile from './scenes/profile/Profile';
+import Orders from './scenes/orders/Orders';
 
 function App() {
   const mode = useSelector(state => state.auth.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-  const isAuth = Boolean(useSelector((state) => state.token));
+  const isAuth = Boolean(useSelector((state) => state.auth?.user?.token));
 
   return (
     <div className='app'>
@@ -28,6 +29,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path="loginpage" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
+            <Route path="profile/orders" element={isAuth ? <Orders /> : <Navigate to="/" />} />
             <Route path="profile" element={isAuth? <Profile /> : <Navigate to="/" />} />
             <Route path="product/:productId" element={<ItemDetails />} />
           </Routes>

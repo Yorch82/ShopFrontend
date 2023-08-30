@@ -7,9 +7,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const InstantMessage = ({message, errorType}) =>  {
-    console.log(message)
-    console.log(errorType)
-
         const [open, setOpen] = useState(true); 
         //Leave this true since we are not using a button
     

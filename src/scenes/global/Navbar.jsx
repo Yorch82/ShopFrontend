@@ -10,7 +10,6 @@ import {
   MenuItem,
   Button,
   Menu,
-  
 } from '@mui/material';
 import {
   Search,
@@ -18,7 +17,8 @@ import {
   LightMode,
   Close,
   ShoppingBagOutlined,
-  MenuOpen
+  MenuOpen,
+  Person,
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode, logout } from '../../features/auth/authSlice';
@@ -120,16 +120,13 @@ const Navbar = () => {
               )}
             </IconButton>
           </Badge>
-
-          <Button
-            id='demo-positioned-button'
-            aria-controls={open ? 'demo-positioned-menu' : undefined}
-            aria-haspopup='true'
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}            
-          >
-            {!user ? 'Login' : `${user.name}`}
-          </Button>
+          <IconButton onClick={handleClick}>
+            {theme.palette.mode === 'dark' ? (
+              <Person sx={{ fontSize: '25px' }} />
+            ) : (
+              <Person sx={{ color: dark, fontSize: '25px' }} />
+            )}
+          </IconButton >          
           {!user ? (
             <Menu
               id='demo-positioned-menu'
@@ -166,8 +163,10 @@ const Navbar = () => {
                 horizontal: 'left',
               }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My orders</MenuItem>
+              <MenuItem onClick={() => navigate('profile')}>Profile</MenuItem>
+              <MenuItem onClick={() => navigate('profile/orders')}>
+                My Orders
+              </MenuItem>
               <MenuItem onClick={setLogout}>Logout</MenuItem>
             </Menu>
           )}
@@ -241,15 +240,13 @@ const Navbar = () => {
                 )}
               </IconButton>
             </Badge>
-            <Button
-              id='demo-positioned-button'
-              aria-controls={open ? 'demo-positioned-menu' : undefined}
-              aria-haspopup='true'
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-            >
-              {!user ? 'Login' : `${user.name}`}
-            </Button>
+            <IconButton onClick={handleClick}>
+              {theme.palette.mode === 'dark' ? (
+                <Person sx={{ fontSize: '25px' }} />
+              ) : (
+                <Person sx={{ color: dark, fontSize: '25px' }} />
+              )}
+            </IconButton>            
             {!user ? (
               <Menu
                 id='demo-positioned-menu'

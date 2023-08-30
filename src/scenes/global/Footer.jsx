@@ -57,10 +57,10 @@ function Footer() {
             Contact Us
           </Typography>
           <Typography mb='30px'>
-            50 north Whatever Blvd, Washington, DC 10501
+            Av. San Jaime 30, Santa Eulalia del Rio, Islas Baleares
           </Typography>
           <Typography mb='30px' sx={{ wordWrap: 'break-word' }}>
-            Email: mredwardroh@gmail.com
+            Email: jcampo1982@outlook.com
           </Typography>
           <Typography mb='30px'>(222)333-4444</Typography>
         </Box>
