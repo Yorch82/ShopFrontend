@@ -10,6 +10,7 @@ import {
   MenuItem,
   Button,
   Menu,
+  
 } from '@mui/material';
 import {
   Search,
@@ -17,6 +18,7 @@ import {
   LightMode,
   Close,
   ShoppingBagOutlined,
+  MenuOpen
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode, logout } from '../../features/auth/authSlice';
@@ -124,7 +126,7 @@ const Navbar = () => {
             aria-controls={open ? 'demo-positioned-menu' : undefined}
             aria-haspopup='true'
             aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
+            onClick={handleClick}            
           >
             {!user ? 'Login' : `${user.name}`}
           </Button>
@@ -174,7 +176,7 @@ const Navbar = () => {
         <IconButton
           onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
         >
-          <Menu />
+          <MenuOpen />
         </IconButton>
       )}
 
