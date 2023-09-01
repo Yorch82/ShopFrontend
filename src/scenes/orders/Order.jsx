@@ -1,4 +1,5 @@
 import {
+  Box,
   Divider,
   Paper,
   Table,
@@ -11,7 +12,6 @@ import {
 } from '@mui/material';
 
 const Order = ({ order }) => {
-  console.log(order);
   const data = order.Order_Products.map((d, i) => ({
     key: i,
     name: d.Product?.product,
@@ -24,7 +24,7 @@ const Order = ({ order }) => {
   const date = new Date(order.date).toLocaleString();
 
   return (
-    <>
+    <Box mb="15px">
       <Typography>Order Number: {order.order_num}</Typography>
       <Typography>Date: {date}</Typography>
       <TableContainer component={Paper} mb='10px'>
@@ -48,7 +48,7 @@ const Order = ({ order }) => {
                 </TableCell>
                 <TableCell align='right'>{row.quantity}</TableCell>
                 <TableCell align='right'>{row.price}</TableCell>
-                <TableCell align='right'>{row.subtotal}</TableCell>      
+                <TableCell align='right'>{row.subtotal}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -56,7 +56,7 @@ const Order = ({ order }) => {
       </TableContainer>
       <Typography>Total: {total} €</Typography>
       <Divider />
-    </>
+    </Box>
   );
 };
 

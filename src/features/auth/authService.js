@@ -30,6 +30,20 @@ const logout = async () => {
   return res.data;
 };
 
+const updateUser = async (userData) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const res = await axios.put(API_URL + '/users/', userData, {
+    headers: {
+      authorization: user?.token,
+      'Content-Type': 'multipart/form-data'
+    },
+  });
+  if (res.data) {
+    return res.data;
+  }
+  return res.data;
+};
+
 const getUserInfo = async () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const res = await axios.get(API_URL + '/users/info', {
@@ -44,7 +58,8 @@ const authService = {
   register,
   login,
   logout,
-  getUserInfo
+  getUserInfo,
+  updateUser
 };
 
 export default authService;

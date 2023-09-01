@@ -26,7 +26,7 @@ const initialValuesLogin = {
 
 const LoginPage = () => {
   const theme = useTheme();
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
   const { palette } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -58,48 +58,46 @@ const LoginPage = () => {
   }, [isError, isSuccess, message]);
 
   const handleFormSubmit = async (values, onSubmitProps) => {
-    await dispatch(login(values));    
+    dispatch(login(values));
   };
-
 
   return (
     <Box>
       <Box
-        width={isNonMobileScreens ? "50%" : "93%"}
-        p="2rem"
-        m="2rem auto"
-        borderRadius="1.5rem"
+        width={isNonMobileScreens ? '50%' : '93%'}
+        p='2rem'
+        m='2rem auto'
+        borderRadius='1.5rem'
         backgroundColor={theme.palette.background.alt}
       >
-        <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
+        <Typography fontWeight='500' variant='h5' sx={{ mb: '1.5rem' }}>
           Welcome!
         </Typography>
         <Formik
-      onSubmit={handleFormSubmit}
-      initialValues={initialValuesLogin}
-      validationSchema={loginSchema}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleBlur,
-        handleChange,
-        handleSubmit,
-        setFieldValue,
-        resetForm,
-      }) => (
-        <form onSubmit={handleSubmit}>
-          <Box
-            display='grid'
-            gap='30px'
-            gridTemplateColumns='repeat(4, minmax(0, 1fr))'
-            sx={{
-              '& > div': { gridColumn: isNonMobile ? undefined : 'span 4' },
-            }}
-          >
-            
-            <TextField
+          onSubmit={handleFormSubmit}
+          initialValues={initialValuesLogin}
+          validationSchema={loginSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+            setFieldValue,
+            resetForm,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <Box
+                display='grid'
+                gap='30px'
+                gridTemplateColumns='repeat(4, minmax(0, 1fr))'
+                sx={{
+                  '& > div': { gridColumn: isNonMobile ? undefined : 'span 4' },
+                }}
+              >
+                <TextField
                   label='Email'
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -108,61 +106,61 @@ const LoginPage = () => {
                   error={Boolean(touched.email) && Boolean(errors.email)}
                   helperText={touched.email && errors.email}
                   sx={{ gridColumn: 'span 4' }}
-                /> 
-            <TextField
-              label='Password'
-              type='password'
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.password}
-              name='password'
-              error={Boolean(touched.password) && Boolean(errors.password)}
-              helperText={touched.password && errors.password}
-              sx={{ gridColumn: 'span 4' }}
-            />
-            
-            {error ? (
-              <InstantMessage message={errorMessage} errorType={severity} />
-            ) : (
-              ``
-            )}
-          </Box>
+                />
+                <TextField
+                  label='Password'
+                  type='password'
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.password}
+                  name='password'
+                  error={Boolean(touched.password) && Boolean(errors.password)}
+                  helperText={touched.password && errors.password}
+                  sx={{ gridColumn: 'span 4' }}
+                />
 
-          {/* BUTTONS */}
-          <Box>
-            <Button
-              fullWidth
-              type='submit'
-              sx={{
-                m: '2rem 0',
-                p: '1rem',
-                backgroundColor: palette.primary.main,
-                color: palette.background.alt,
-                '&:hover': { color: palette.primary.main },
-              }}
-            >
-              LOGIN
-            </Button>
-            <Typography
-              onClick={() => {
-                navigate('/register');
-                resetForm();
-              }}
-              sx={{
-                textDecoration: 'underline',
-                color: palette.primary.main,
-                '&:hover': {
-                  cursor: 'pointer',
-                  color: palette.primary.light,
-                },
-              }}
-            >         
-              Don't have an account? Sign Up here.                
-            </Typography>
-          </Box>
-        </form>
-      )}
-    </Formik>
+                {error ? (
+                  <InstantMessage message={errorMessage} errorType={severity} />
+                ) : (
+                  ``
+                )}
+              </Box>
+
+              {/* BUTTONS */}
+              <Box>
+                <Button
+                  fullWidth
+                  type='submit'
+                  sx={{
+                    m: '2rem 0',
+                    p: '1rem',
+                    backgroundColor: palette.primary.main,
+                    color: palette.background.alt,
+                    '&:hover': { color: palette.primary.main },
+                  }}
+                >
+                  LOGIN
+                </Button>
+                <Typography
+                  onClick={() => {
+                    navigate('/register');
+                    resetForm();
+                  }}
+                  sx={{
+                    textDecoration: 'underline',
+                    color: palette.primary.main,
+                    '&:hover': {
+                      cursor: 'pointer',
+                      color: palette.primary.light,
+                    },
+                  }}
+                >
+                  Don't have an account? Sign Up here.
+                </Typography>
+              </Box>
+            </form>
+          )}
+        </Formik>
       </Box>
     </Box>
   );

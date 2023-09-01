@@ -7,7 +7,7 @@ const initialState = {
   product: {},
 };
 
-export const getAll = createAsyncThunk('products/', async thunkAPI => {
+export const getAll = createAsyncThunk('products', async thunkAPI => {
   try {
     return await productsService.getAll();
   } catch (error) {
@@ -17,7 +17,7 @@ export const getAll = createAsyncThunk('products/', async thunkAPI => {
 });
 
 export const getById = createAsyncThunk(
-  "posts/getById",
+  "products/getById",
   async (id, thunkAPI) => {
     try {
       return await productsService.getProductById(id);

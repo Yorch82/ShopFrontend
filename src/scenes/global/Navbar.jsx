@@ -282,8 +282,8 @@ const Navbar = () => {
                   horizontal: 'left',
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My orders</MenuItem>
+                <MenuItem onClick={() => navigate('profile')}>Profile</MenuItem>
+                <MenuItem onClick={() => navigate('profile/orders')}>My orders</MenuItem>
                 <MenuItem onClick={setLogout}>Logout</MenuItem>
               </Menu>
             )}

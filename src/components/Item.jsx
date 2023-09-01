@@ -28,7 +28,7 @@ const Item = ({ id, product, price, image_path, sectionId, categoryId }) => {
         <img
           alt={product}
           width='300px'
-          height='300px'
+          height='280px'
           src={`http://localhost:8000/${image_path}`}
           onClick={() => navigate(`/product/${id}`)}
           style={{ cursor: 'pointer' }}

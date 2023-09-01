@@ -17,7 +17,8 @@ import Orders from './scenes/orders/Orders';
 function App() {
   const mode = useSelector(state => state.auth.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-  const isAuth = Boolean(useSelector((state) => state.auth?.user?.token));
+  const user = JSON.parse(localStorage.getItem('user'));
+  const isAuth = Boolean(user?.token);
 
   return (
     <div className='app'>
