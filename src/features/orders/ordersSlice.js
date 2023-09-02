@@ -15,6 +15,15 @@ export const getAll = createAsyncThunk('orders', async thunkAPI => {
     }
 });
 
+export const createOrder = createAsyncThunk('orders/create', async (order, thunkAPI) => {
+  try {
+    return await ordersService.createOrder(order);
+  } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const ordersSlice = createSlice({
     name: 'orders',
     initialState,

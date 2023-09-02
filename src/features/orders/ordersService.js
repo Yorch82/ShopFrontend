@@ -12,8 +12,18 @@ const getAll = async () => {
     return res.data;
 };
 
+const createOrder = async(order) => {
+    const res = await axios.post(env.REACT_APP_API_URL + "/orders", order, {
+        headers: {
+            Authorization: user?.token,
+          },
+    });
+    return res.data;
+}
+
 const ordersService = {
     getAll,
+    createOrder
 };
 
 export default ordersService;

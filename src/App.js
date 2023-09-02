@@ -13,6 +13,8 @@ import LoginPage from './scenes/loginPage/LoginPage';
 import RegisterPage from './scenes/registerPage/RegisterPage';
 import Profile from './scenes/profile/Profile';
 import Orders from './scenes/orders/Orders';
+import Checkout from './scenes/checkout/Checkout';
+import Confirmation from './scenes/checkout/Confirmation';
 
 function App() {
   const mode = useSelector(state => state.auth.mode);
@@ -33,6 +35,8 @@ function App() {
             <Route path="profile/orders" element={isAuth ? <Orders /> : <Navigate to="/" />} />
             <Route path="profile" element={isAuth? <Profile /> : <Navigate to="/" />} />
             <Route path="product/:productId" element={<ItemDetails />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="checkout/success" element={<Confirmation />} />
           </Routes>
           <CartMenu />
           <Footer />

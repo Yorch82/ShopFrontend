@@ -123,7 +123,7 @@ const RegisterPage = () => {
                     label='Name'
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.firstName}
+                    value={values.name}
                     name='name'
                     error={Boolean(touched.name) && Boolean(errors.name)}
                     helperText={touched.name && errors.name}
@@ -133,7 +133,7 @@ const RegisterPage = () => {
                     label='Surname'
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.lastName}
+                    value={values.surname}
                     name='surname'
                     error={Boolean(touched.surname) && Boolean(errors.surname)}
                     helperText={touched.surname && errors.surname}
