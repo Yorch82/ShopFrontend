@@ -1,13 +1,12 @@
 import axios from "axios";
-
-const API_URL = "http://localhost:8000";
+import env from "react-dotenv";
 
 const getAll = async () => {
-    const res = await axios.get(API_URL + "/products");
+    const res = await axios.get(env.REACT_APP_API_URL + "/products");
     return res.data;
 };
 const getProductById = async id => {
-    const res = await axios.get(API_URL + '/products/id/' + id);
+    const res = await axios.get(env.REACT_APP_API_URL + '/products/id/' + id);
     return res.data;   
 };
 

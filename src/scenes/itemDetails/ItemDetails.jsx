@@ -11,6 +11,7 @@ import { colorTokens } from '../../theme';
 import { addToCart } from '../../features/cart/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getById, getAll, reset } from '../../features/products/productsSlice';
+import env from "react-dotenv";
 
 const ItemDetails = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const ItemDetails = () => {
             alt={product.product}
             width='100%'
             height='100%'
-            src={`http://localhost:8000/${product?.image_path}`}
+            src={env.REACT_APP_API_URL +`/${product?.image_path}`}
             style={{ objectFit: 'contain' }}
           />
         </Box>

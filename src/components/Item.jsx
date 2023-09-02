@@ -6,6 +6,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { colorTokens } from "../theme";
 import { addToCart } from "../features/cart/index";
 import { useNavigate } from 'react-router-dom';
+import env from "react-dotenv";
 
 const Item = ({ id, product, price, image_path, sectionId, categoryId }) => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Item = ({ id, product, price, image_path, sectionId, categoryId }) => {
           alt={product}
           width='300px'
           height='280px'
-          src={`http://localhost:8000/${image_path}`}
+          src={env.REACT_APP_API_URL + `/${image_path}`}
           onClick={() => navigate(`/product/${id}`)}
           style={{ cursor: 'pointer' }}
         />

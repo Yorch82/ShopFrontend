@@ -15,6 +15,7 @@ import Dropzone from 'react-dropzone';
 import FlexBetween from '../../components/FlexBetween';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import env from "react-dotenv";
 
 const initialValuesUpdate = {
   avatar: '',
@@ -67,7 +68,7 @@ const Profile = () => {
             alt={fullName}
             width='300px'
             height='280px'
-            src={`http://localhost:8000/${user.user.image_path}`}
+            src={`${env.REACT_APP_API_URL}${user.user.image_path}`}
             position='relative'
           />
           <Fab

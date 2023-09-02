@@ -1,13 +1,12 @@
 import axios from "axios";
+import env from "react-dotenv";
 
 const user = JSON.parse(localStorage.getItem('user'));
 
-const API_URL = "http://localhost:8000";
-
 const getAll = async () => {
-    const res = await axios.get(API_URL + "/orders", {
+    const res = await axios.get(env.REACT_APP_API_URL + "/orders", {
         headers: {
-            authorization: user?.token,
+            Authorization: user?.token,
           },
     });
     return res.data;

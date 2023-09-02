@@ -12,6 +12,7 @@ import {
   setIsCartOpen,
 } from "../../features/cart/index";
 import { useNavigate } from "react-router-dom";
+import env from "react-dotenv";
 
 const FlexBox = styled(Box)`
   display: flex;
@@ -68,7 +69,7 @@ const CartMenu = () => {
                       alt={product?.product}
                       width="123px"
                       height="164px"
-                      src={`http://localhost:8000/${product?.image_path}`}
+                      src={env.REACT_APP_API_URL + `/${product?.image_path}`}
                     />
                   </Box>
                   <Box flex="1 1 60%">

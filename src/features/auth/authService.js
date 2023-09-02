@@ -1,14 +1,13 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:8000';
+import env from "react-dotenv";
 
 const register = async userData => {
-  const res = await axios.post(API_URL + '/users', userData);
+  const res = await axios.post(env.REACT_APP_API_URL + '/users', userData);
   return res.data;
 };
 
 const login = async userData => {
-  const res = await axios.post(API_URL + '/users/login', userData);
+  const res = await axios.post(env.REACT_APP_API_URL + '/users/login', userData);
 
   if (res.data) {
     localStorage.setItem('user', JSON.stringify(res.data));
@@ -19,7 +18,7 @@ const login = async userData => {
 
 const logout = async () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const res = await axios.delete(API_URL + '/users/logout', {
+  const res = await axios.delete(env.REACT_APP_API_URL + '/users/logout', {
     headers: {
       authorization: user?.token,
     },
@@ -32,7 +31,7 @@ const logout = async () => {
 
 const updateUser = async (userData) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const res = await axios.put(API_URL + '/users/', userData, {
+  const res = await axios.put(env.REACT_APP_API_URL + '/users/', userData, {
     headers: {
       authorization: user?.token,
       'Content-Type': 'multipart/form-data'
@@ -46,7 +45,7 @@ const updateUser = async (userData) => {
 
 const getUserInfo = async () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const res = await axios.get(API_URL + '/users/info', {
+  const res = await axios.get(env.REACT_APP_API_URL + '/users/info', {
     headers: {
       authorization: user?.token,
     },
