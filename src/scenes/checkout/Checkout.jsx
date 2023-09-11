@@ -7,6 +7,7 @@ import Shipping from './Shipping';
 import { colorTokens } from '../../theme';
 import Payment from './Payment';
 import { createOrder } from '../../features/orders/ordersSlice';
+import env from "react-dotenv";
 
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -121,7 +122,7 @@ const Checkout = () => {
             }))
         };
 
-        const response = await fetch("http://localhost:8000/orders/create-checkout-session", {
+        const response = await fetch(`${env.REACT_APP_API_URL}/orders/create-checkout-session`, {
             method: "POST",
             headers: {
                 "authorization": user?.token,
