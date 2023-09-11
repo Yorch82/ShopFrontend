@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Stepper, Step, StepLabel } from '@mui/material';
 import { Formik } from 'formik';
 import { useState } from 'react';
@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import Shipping from './Shipping';
 import { colorTokens } from '../../theme';
 import Payment from './Payment';
+import { createOrder } from '../../features/orders/ordersSlice';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -87,6 +88,7 @@ const checkoutSchema = [
 ]
 
 const Checkout = () => {
+  const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart.cart);
   const isFirstStep = activeStep === 0;
@@ -128,9 +130,10 @@ const Checkout = () => {
             body: JSON.stringify(requestBody)
         });
 
-        const session = await response.json();
-        
+        const session = await response.json();        
         window.location.href = session.url
+
+        if(session) dispatch(createOrder(values));
   };
 
   return (

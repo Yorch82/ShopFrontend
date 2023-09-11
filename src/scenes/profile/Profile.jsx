@@ -180,11 +180,21 @@ const Profile = () => {
             </Box>
           </Modal>
         </Box>
-
-        <Box>
-          <Typography>Name: {fullName}</Typography>
-          <Typography>Email: {user.user.email}</Typography>
-          <Typography>Role: {user.user.role}</Typography>
+        
+        <Box
+          padding='1.5rem 1.5rem 0.75rem 1.5rem'
+          backgroundColor={palette.background.alt}
+          borderRadius='0.75rem'
+          mt='5rem'
+          display='flex'
+          flexDirection='column'
+          alignItems='center'
+          justifyContent='space-around'
+          width='60%'
+        >
+          <Typography variant="h2">Name: {fullName}</Typography>
+          <Typography variant="h2">Email: {user.user.email}</Typography>
+          <Typography variant="h2">Role: {user.user.role}</Typography>
         </Box>
       </Box>
     </Box>
