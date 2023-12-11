@@ -30,7 +30,7 @@
 
 ## Introducción
 
-En este proyecto se unifica todo lo aprendido hasta ahora. Los alumnos desarrollarán un e-commerce donde los usuarios se registrarán, logearán , verán productos y crearán pedidos utilizando la API del e-commerce que crearon en el 1º Proyecto de backend.
+En este proyecto se unifica todo lo aprendido hasta ahora. Los alumnos desarrollarán un e-commerce donde los usuarios se registrarán, logearán , verán productos y crearán pedidos utilizando la API del e-commerce que crearon en el 1º Proyecto de backend
 
 
 ### Tecnologías
